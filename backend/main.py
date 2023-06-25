@@ -19,10 +19,10 @@ class TransactionCount(Resource):
 
         sql = """
         SELECT 
-          date_trunc('day', block_timestamp) AS Day,
+          date_trunc('day',block_timestamp) AS Day,
           count(DISTINCT tx_hash) AS tx_count
         FROM optimism.core.fact_transactions 
-        WHERE block_timestamp >= DATE_SUB(CURDATE(),INTERVAL 1 YEAR)
+        WHERE '2023-06-26' >= block_timestamp - interval '1 year'
         GROUP BY 1
         ORDER BY 1 ASC;
         """
