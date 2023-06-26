@@ -24,14 +24,16 @@ class TransactionCount(Resource):
         FROM optimism.core.fact_transactions 
         WHERE '2023-06-26' >= block_timestamp - interval '1 year'
         GROUP BY 1
-        ORDER BY 1 ASC;
+        ORDER BY 1 DESC;
         """
         try:
             query_result_set = flipside.query(sql)
-            print(query_result_set)
-            return {"query":"successful"}
+            #print(query_result_set)
+            return {"Columns":query_result_set.columns,
+                    "Rows":query_result_set.rows
+                    }
         except:
-            return {'query':'unsuccessful'}
+            return {'Error':'query unsuccessful'}
 
 
 class EthereumData(Resource):
