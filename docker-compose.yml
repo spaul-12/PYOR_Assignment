@@ -11,7 +11,7 @@ services:
       - ./backend:/app
   nextjs-app:
   	build:
-  	  context: ./frontend
+  	  context: ./frontend/trading_app
   	  dockerfile: Dockerfile
   	ports:
   	  - 3000:3000
