@@ -26,7 +26,7 @@ class TransactionCount(Resource):
         FROM optimism.core.fact_transactions 
         WHERE '2023-06-26' >= block_timestamp - interval '1 year'
         GROUP BY 1
-        ORDER BY 1 DESC;
+        ORDER BY 1 ASC;
         """
         try:
             query_result_set = flipside.query(sql)

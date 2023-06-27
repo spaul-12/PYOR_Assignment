@@ -11,10 +11,19 @@ export const metadata: Metadata ={
 export default async function ChartPage() {
   const data = await getData()
   //const data = await chart_data
-  //console.log(data)
+  data.Rows.reverse();
+  console.log(data.Rows[0][0].substring(0,10))
+  const chart_data = data.Rows.map(
+    (item:any) =>{
+      return{
+      time: item[0].substring(0,10),
+      value: item[1],
+      };
+    }
+  );
   const content = (
     <section>
-       <Chart/>
+       <Chart initialData={chart_data}/>
     </section>
   )
   
