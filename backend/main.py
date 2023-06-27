@@ -4,11 +4,13 @@ from flipside import Flipside
 import os
 from dotenv import load_dotenv
 import requests
+from flask_cors import CORS
 
 #loading the env variable
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 
@@ -28,7 +30,7 @@ class TransactionCount(Resource):
         """
         try:
             query_result_set = flipside.query(sql)
-            #print(query_result_set)
+            print(query_result_set)
             return {"Columns":query_result_set.columns,
                     "Rows":query_result_set.rows
                     }
